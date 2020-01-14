@@ -6,7 +6,7 @@
 /*   By: sfeith <sfeith@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 11:49:15 by sfeith         #+#    #+#                */
-/*   Updated: 2020/01/14 13:38:30 by sfeith        ########   odam.nl         */
+/*   Updated: 2020/01/14 15:07:33 by sfeith        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,19 +82,21 @@ char			*ft_strjoin(char const *s1, char const *s2)
 	return (ns);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-	while (*s != '\0')
-	{
-		if (*s == c)
-			return ((char*)s);
-		s++;
-	}
-	if (*s == c)
-		return ((char*)s);
-	return (0);
-}
+	size_t i;
 
+	i = ft_strlen(s);
+	while (i)
+	{
+		if (s[i] == c)
+			return ((char *)&s[i]);
+		i--;
+	}
+	if (s[i] == c)
+		return ((char *)&s[i]);
+	return (NULL);
+}
 
 char	*ft_substr(char *s, unsigned int start, size_t len)
 {

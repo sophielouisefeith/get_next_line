@@ -6,7 +6,7 @@
 /*   By: sfeith <sfeith@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:57:40 by sfeith         #+#    #+#                */
-/*   Updated: 2020/01/14 15:51:50 by sfeith        ########   odam.nl         */
+/*   Updated: 2020/01/14 19:04:06 by sfeith        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,6 @@ static char 	*ft_cut(char *new, char **line)
 {
 	int i;
 	
-	// i = ft_strlen(new);
-	// while (i >= 0 && new[i] != '\0' && new[i] != '\n' )
-	// {
-	// 	i--;
-	// 	// break ;
-	// 	//i++;
-	// }
 	i = 0;
 	while ( new[i] != '\0' && new[i] != '\n')
 		i++;
@@ -35,12 +28,14 @@ static char 	*ft_cut(char *new, char **line)
 }
 
 
-static int ft_ret(int ret)
+static int ft_ret(int ret, char *new)
 {
-	if (ret > 0)
+	if (ret == 0 && new[0] == '\0')
+		return 0;
+	if ( ret < 0)
+		return -1;
+	else 
 		return 1;
-	else
-		return ret;
 }
 
 int  get_next_line(const int fd, char **line)
@@ -51,28 +46,21 @@ int  get_next_line(const int fd, char **line)
 	
 	if (new == NULL)
 		new = ft_strdup("");
-	buf = (char *)malloc((BUFFER_SIZE) * sizeof(char));
+		if (new == NULL)
+			return -1;
+	buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	ret = 1;
 	while (ret)
 	{
 		ret = (read(fd, buf, BUFFER_SIZE));
     	buf[ret] = '\0';
 		new = ft_strjoin(new, buf);
-		// if (ft_strlen(new) > BUFFER_SIZE)
-		// {
 		if (ft_strrchr(new, '\n'))
 	 		break ;
-		if (!ft_strrchr(new ))
-			//new = ft_cut(new, line);
-		// }
-		// if (ft_strlen(new) > BUFFER_SIZE)
-		// {
-		// 	if (ft_strrchr(new, '\n'))
-	 	// 		break ;
-		// 	new = ft_cut(new, line);
-		// }
 	}
+	printf("ret[%d]", ret);
  new = ft_cut(new, line);
- ret = ft_ret(ret);
+ ret = ft_ret(ret, new);
+ printf("ret[%d]", ret);
  return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: sfeith <sfeith@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 11:49:15 by sfeith         #+#    #+#                */
-/*   Updated: 2020/01/14 15:07:33 by sfeith        ########   odam.nl         */
+/*   Updated: 2020/01/16 11:47:27 by sfeith        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static char		*ft_strcpy(char *dest, char const *src1, char const *src2)
 	return (dest);
 }
 
-char			*ft_strjoin(char const *s1, char const *s2)
+char			*ft_strjoin(char  *s1, char  *s2)
 {
 	size_t		s1len;
 	size_t		s2len;
@@ -79,23 +79,22 @@ char			*ft_strjoin(char const *s1, char const *s2)
 	if (ns == NULL)
 		return (NULL);
 	ft_strcpy(ns, s1, s2);
+	free(s1);
+	free(s2);
 	return (ns);
 }
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t i;
-
-	i = ft_strlen(s);
-	while (i)
+	while (*s != '\0')
 	{
-		if (s[i] == c)
-			return ((char *)&s[i]);
-		i--;
+		if (*s == c)
+			return ((char*)s);
+		s++;
 	}
-	if (s[i] == c)
-		return ((char *)&s[i]);
-	return (NULL);
+	if (*s == c)
+		return ((char*)s);
+	return (0);
 }
 
 char	*ft_substr(char *s, unsigned int start, size_t len)

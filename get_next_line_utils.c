@@ -6,7 +6,7 @@
 /*   By: sfeith <sfeith@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 11:49:15 by sfeith         #+#    #+#                */
-/*   Updated: 2020/01/16 11:47:27 by sfeith        ########   odam.nl         */
+/*   Updated: 2020/01/21 12:10:49 by sfeith        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char			*ft_strjoin(char  *s1, char  *s2)
 		return (NULL);
 	ft_strcpy(ns, s1, s2);
 	free(s1);
-	free(s2);
+	//free(s2);
 	return (ns);
 }
 
@@ -115,6 +115,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	if (sub == NULL)
 		return (NULL);
 	ft_strlcpy(sub, s + start, len + 1);
+	free(s);
 	return (sub);
 }
 

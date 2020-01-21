@@ -6,7 +6,7 @@
 /*   By: sfeith <sfeith@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 11:44:42 by sfeith         #+#    #+#                */
-/*   Updated: 2020/01/16 11:45:21 by sfeith        ########   odam.nl         */
+/*   Updated: 2020/01/21 11:34:38 by sfeith        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ int     main(void)
 		i++;
 		free(line);
 	}
-	while(1)
-	{
+	// while(1)
+	// {
 		
-	}
+	// }
 }
 
 

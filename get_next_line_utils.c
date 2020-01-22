@@ -5,25 +5,12 @@
 /*                                                     +:+                    */
 /*   By: sfeith <sfeith@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/13 11:49:15 by sfeith         #+#    #+#                */
-/*   Updated: 2020/01/21 12:10:49 by sfeith        ########   odam.nl         */
+/*   Created: 2020/01/11 16:59:23 by sfeith         #+#    #+#                */
+/*   Updated: 2020/01/22 15:22:47 by sfeith        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-
-
-
-size_t	ft_strlen(const char *s)
-{
-	size_t i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-} 
 
 char	*ft_strdup(const char *s1)
 {
@@ -65,7 +52,7 @@ static char		*ft_strcpy(char *dest, char const *src1, char const *src2)
 	return (dest);
 }
 
-char			*ft_strjoin(char  *s1, char  *s2)
+char			*ft_strjoin(char *s1, char *s2)
 {
 	size_t		s1len;
 	size_t		s2len;
@@ -77,10 +64,14 @@ char			*ft_strjoin(char  *s1, char  *s2)
 	s2len = ft_strlen(s2);
 	ns = (char *)malloc((s1len + s2len + 1) * sizeof(char));
 	if (ns == NULL)
+	{
+		free(s1);
+		free(s2);
 		return (NULL);
+	}
 	ft_strcpy(ns, s1, s2);
 	free(s1);
-	//free(s2);
+	free(s2);
 	return (ns);
 }
 
@@ -107,34 +98,18 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	if (!s)
 		return (NULL);
 	srclen = ft_strlen(s);
-	if (start >= srclen)
-		return (ft_strdup(""));
-	if (srclen - start < len)
-		len = srclen - start;
 	sub = (char *)malloc(sizeof(char) * len + 1);
 	if (sub == NULL)
-		return (NULL);
-	ft_strlcpy(sub, s + start, len + 1);
-	free(s);
-	return (sub);
-}
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
-{
-	size_t i;
-	size_t len;
-
-	if (!src && !dst)
-		return (0);
-	i = 0;
-	len = ft_strlen(src);
-	if (dstsize == 0)
-		return (len);
-	while (src[i] != '\0' && i + 1 < dstsize)
 	{
-		dst[i] = src[i];
-		i++;
+		free(s);
+		return (NULL);
 	}
-	dst[i] = '\0';
-	return (len);
+	while (i < len && start < srclen)
+	{
+		sub[i] = s[start];
+		i++;
+		start++;
+	}
+	sub[i] = '\0';
+	return (sub);
 }

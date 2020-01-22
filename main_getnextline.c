@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: sfeith <sfeith@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/13 11:44:42 by sfeith         #+#    #+#                */
-/*   Updated: 2020/01/21 11:34:38 by sfeith        ########   odam.nl         */
+/*   Created: 2020/01/11 16:59:23 by sfeith         #+#    #+#                */
+/*   Updated: 2020/01/22 18:21:40 by sfeith        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <fcntl.h>
-//#include "get_next_line.h"
-// // int main(int argc, char **argv)
-// // {
-// //     int     res;
-// //     int     fd;
-// //     int     i;
-// //     char    *line;
-// //     i = 1;
-// //     res = 1;
-// //     fd = open(argv[1], O_RDONLY);
-// //     while (res == 1)
-// //     {
-// //         res = get_next_line(fd, &line);
-// //         printf("--%d--", i);
-// //         printf("%s", line);
-// //         printf("\n");
-// //         i++;
-// //         free(line);
-// //     }
-// //     while (1){}
-// //     return (0);
-// // }
+
 
 int     main(void)
 {
@@ -45,20 +24,20 @@ int     main(void)
     int ret;
 	char *line;
     //char buf[BUFFER_SIZE + 1];
-	int i = 0;
+	int i = 1;
 	
 	ret = 1;
     fd = open("text.txt", O_RDONLY);
 	if (fd == - 1)
 		printf("mislukt[%d]", fd);
-    while( ret )
+    while( ret > 0)
 	{
 		ret = get_next_line(fd, &line);
      	//printf("line: [%s]\n", line);
-		printf("PRINT: [%i] [%s]\n", i, line);
-		//free(line);
-		i++;
+		printf("PRINT: [%i] [%d] [%s]\n", i, ret, line);
 		free(line);
+		i++;
+		//free(line);
 	}
 	// while(1)
 	// {

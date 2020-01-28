@@ -6,18 +6,18 @@
 /*   By: sfeith <sfeith@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:59:23 by sfeith         #+#    #+#                */
-/*   Updated: 2020/01/22 18:06:22 by sfeith        ########   odam.nl         */
+/*   Updated: 2020/01/23 13:29:31 by sfeith        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GETNEXTLINE_H
-# define GETNEXTLINE_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <unistd.h>
-#include <fcntl.h>
+# include <fcntl.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 6

@@ -6,13 +6,13 @@
 /*   By: sfeith <sfeith@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/11 16:59:23 by sfeith         #+#    #+#                */
-/*   Updated: 2020/01/22 15:22:47 by sfeith        ########   odam.nl         */
+/*   Updated: 2020/01/23 16:29:41 by sfeith        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strdup(const char *s1)
+char			*ft_strdup(const char *s1)
 {
 	int		len;
 	char	*str;
@@ -58,7 +58,7 @@ char			*ft_strjoin(char *s1, char *s2)
 	size_t		s2len;
 	char		*ns;
 
-	if (!s1 || !s2)
+	if (!s2)
 		return (NULL);
 	s1len = ft_strlen(s1);
 	s2len = ft_strlen(s2);
@@ -75,7 +75,7 @@ char			*ft_strjoin(char *s1, char *s2)
 	return (ns);
 }
 
-char	*ft_strchr(const char *s, int c)
+char			*ft_strchr(const char *s, int c)
 {
 	while (*s != '\0')
 	{
@@ -88,7 +88,7 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-char	*ft_substr(char *s, unsigned int start, size_t len)
+char			*ft_substr(char *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	size_t	srclen;
